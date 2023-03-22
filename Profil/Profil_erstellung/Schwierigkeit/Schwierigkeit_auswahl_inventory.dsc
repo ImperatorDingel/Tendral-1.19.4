@@ -145,6 +145,11 @@ Schwierigkeit_auswahl_click_handler:
                         Stamina: 0
                         StaminaMax: 100
                         Speed: 100
+                        Crit: 0
+                        Crit_dmg: 0
+                        Mining_fortune: 0
+                        Farming_fortune: 0
+                        Foraging_fortune: 0
                     Skills:
                         Combat:
                             Level: 0
@@ -209,6 +214,7 @@ Schwierigkeit_auswahl_click_handler:
                     Main-Quests:
                     Side-Quests:
                     Daily-Quests:
+                    Open-Quests:
                 - flag <player> <player.flag[Profil_creation.Profil]>:<[Profil_flag_set]>
                 - flag <player> profil_creation:!
                 - inventory open d:Profil_auswahl_inventory
