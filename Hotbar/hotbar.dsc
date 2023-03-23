@@ -5,12 +5,15 @@ Hotbar:
         on player left clicks block with:Menu_item:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:Hauptmenue_inventory
         on player right clicks block with:Menu_item:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:Hauptmenue_inventory
         on player clicks Menu_item in inventory:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:Hauptmenue_inventory
         on player drops Menu_item:
         - determine passively cancelled
         on player swaps items offhand:Menu_item:
@@ -33,12 +36,15 @@ Hotbar:
         on player left clicks block with:Questbuch:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:Questliste_inventory
         on player right clicks block with:Questbuch:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:Questliste_inventory
         on player clicks Questbuch in inventory:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:Questliste_inventory
         on player drops Questbuch:
         - determine passively cancelled
         on player swaps items offhand:Questbuch:

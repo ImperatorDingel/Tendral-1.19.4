@@ -10,9 +10,9 @@ Player_join:
             - define prefix <blue>[Spieler]
         - if <player.has_permission[tendral.bronze]>:
             - define prefix <yellow>[Held]
+        - define freunde <player.flag[freundesliste]>
         - announce "<green>[+] <[prefix]> <gold><player.name>"
         - flag server online_players:->:<player>
-        - determine none
         on player joins:
         - determine none
         after player joins:
@@ -28,12 +28,13 @@ Player_join:
             - inventory open d:Profil_auswahl_inventory
         - determine none
         on player quits:
-        - if <player.has_flag[nameplate]>:
-            - kill <player.flag[nameplate]>
-            - flag <player> nameplate:!
-        - flag <player> <player.flag[Profil]>.Inventory:<player.inventory.list_contents>
-        - flag <player> <player.flag[Profil]>.last_location:<player.location>
-        - inventory clear
+        - if <player.has_flag[Profil]>:
+            - if <player.has_flag[nameplate]>:
+                - kill <player.flag[nameplate]>
+                - flag <player> nameplate:!
+            - flag <player> <player.flag[Profil]>.Inventory:<player.inventory.list_contents>
+            - flag <player> <player.flag[Profil]>.last_location:<player.location>
+            - inventory clear
         - determine none
         after player quits:
         - determine none

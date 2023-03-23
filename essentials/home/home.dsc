@@ -1,13 +1,13 @@
-Home_World:
-    type: world
-    events:
-        after player joins:
-        - if <player.has_flag[Homes_Anzahl]>:
-            - determine cancelled
-        - else:
-            - flag <player> Homes_Anzahl:3
-            - flag <player> Homes_Counter:0
-            - flag <player> Homes_Max:28
+#Home_World:
+    #type: world
+    #events:
+        #after player joins:
+        #- if <player.has_flag[Homes_Anzahl]>:
+        #    - determine cancelled
+        #- else:
+        #    - flag <player> Homes_Anzahl:3
+        #    - flag <player> Homes_Counter:0
+        #    - flag <player> Homes_Max:28
 Home:
     type: command
     name: home

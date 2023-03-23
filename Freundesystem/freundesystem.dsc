@@ -210,11 +210,11 @@ Freund_world:
   type: world
   events:
     on player joins:
-    - if <player.has_flag[Freundesliste]>:
-      - determine cancelled
-    - else:
-      - definemap Freundesliste:
-          Freunde: []
-          Anfragen: []
-          Ausgang: []
-      - flag <player> freundesliste:<[Freundesliste]>
+    #- if <player.has_flag[Freundesliste]>:
+      #- determine cancelled
+    #- else:
+      #- definemap Freundesliste:
+          #Freunde: []
+          #Anfragen: []
+          #Ausgang: []
+      #- flag <player> freundesliste:<[Freundesliste]>

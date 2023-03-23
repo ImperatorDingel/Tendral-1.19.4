@@ -11,13 +11,13 @@ Baumodus:
     - adjust server has_whitelist:true
     - narrate "Baumodus eingeschaltet"
 
-Baumodus_World:
-    type: world
-    events:
-        on player join:
-        - if <server.has_whitelist>:
-            - if <player.is_whitelisted>:
-                - stop
-            - else:
-                - kick <player> reason:Baumodus<&sp>ist<&sp>aktiviert.
-                - determine cancelled
+#Baumodus_World:
+    #type: world
+    #events:
+        #on player join:
+        #- if <server.has_whitelist>:
+            #- if <player.is_whitelisted>:
+                #- stop
+            #- else:
+                #- kick <player> reason:Baumodus<&sp>ist<&sp>aktiviert.
+                #- determine cancelled
