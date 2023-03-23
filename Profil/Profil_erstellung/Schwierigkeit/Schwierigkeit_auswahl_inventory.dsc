@@ -118,8 +118,12 @@ Schwierigkeit_auswahl_click_handler:
                     Side-Quests:
                     Daily-Quests:
                 - flag <player> <player.flag[Profil_creation.Profil]>:<[Profil_flag_set]>
+                - flag <player> Profil:<player.flag[Profil_creation.Profil]>
                 - flag <player> profil_creation:!
-                - inventory open d:Profil_auswahl_inventory
+                - teleport <player> spawn
+                - inventory set o:Questbuch slot:7
+                - inventory set o:Rucksack_item slot:8
+                - inventory set o:Menu_item slot:9
             - case 6:
                 - flag <player> profil_creation.Schwierigkeit:Hardcore
                 - definemap Profil_Flag_set:
@@ -216,5 +220,9 @@ Schwierigkeit_auswahl_click_handler:
                     Daily-Quests:
                     Open-Quests:
                 - flag <player> <player.flag[Profil_creation.Profil]>:<[Profil_flag_set]>
+                - flag <player> Profil:<player.flag[Profil_creation.Profil]>
                 - flag <player> profil_creation:!
-                - inventory open d:Profil_auswahl_inventory
+                - teleport <player> spawn
+                - inventory set o:Questbuch slot:7
+                - inventory set o:Rucksack_item slot:8
+                - inventory set o:Menu_item slot:9

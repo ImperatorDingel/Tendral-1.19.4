@@ -1,5 +1,6 @@
 Player_join:
     type: world
+    debug: false
     events:
         on bungee player joins network:
         - flag <player> Profil:!
@@ -31,6 +32,7 @@ Player_join:
             - kill <player.flag[nameplate]>
             - flag <player> nameplate:!
         - flag <player> <player.flag[Profil]>.Inventory:<player.inventory.list_contents>
+        - flag <player> <player.flag[Profil]>.last_location:<player.location>
         - inventory clear
         - determine none
         after player quits:

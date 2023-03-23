@@ -1,15 +1,12 @@
-Actionbar:
+Actionbar_world:
     type: world
+    debug: false
     events:
         after delta time secondly:
         - run actionbartask
 
 actionbartask:
     type: task
+    debug: false
     script:
-    - define Leben <player.flag[<player.flag[Profil]>.Stats.Leben]>
-    - define Mana <player.flag[<player.flag[Profil]>.Stats.Mana]>
-    - define Max_Mana <player.flag[<player.flag[Profil]>.Stats.ManaMax]>
-    - define actionbar "H:<[Leben]> - M:<[Mana]>/<[Max_Mana]>"
-    - foreach <server.online_players_flagged[Profil]>:
-        - actionbar "<player.flag[<player.flag[Profil]>.Stats.Leben]>" per_player
+    - actionbar "H:<player.health.round>/<player.flag[<player.flag[Profil]>.Stats.Leben]> - M:<player.flag[<player.flag[Profil]>.Stats.Mana]>/<player.flag[<player.flag[Profil]>.Stats.ManaMax]>" per_player targets:<server.online_players_flagged[Profil]>

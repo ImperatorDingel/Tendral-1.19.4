@@ -3,8 +3,10 @@ Hotbar:
     events:
         #Menü
         on player left clicks block with:Menu_item:
+        - determine passively cancelled
         - ratelimit <player> 1t
         on player right clicks block with:Menu_item:
+        - determine passively cancelled
         - ratelimit <player> 1t
         on player clicks Menu_item in inventory:
         - determine passively cancelled
@@ -15,8 +17,10 @@ Hotbar:
         - determine cancelled
         #Rucksack
         on player left clicks block with:Rucksack_item:
+        - determine passively cancelled
         - ratelimit <player> 1t
         on player right clicks block with:Rucksack_item:
+        - determine passively cancelled
         - ratelimit <player> 1t
         on player clicks Rucksack_item in inventory:
         - determine passively cancelled
@@ -27,8 +31,10 @@ Hotbar:
         - determine cancelled
         #Questbuch
         on player left clicks block with:Questbuch:
+        - determine passively cancelled
         - ratelimit <player> 1t
         on player right clicks block with:Questbuch:
+        - determine passively cancelled
         - ratelimit <player> 1t
         on player clicks Questbuch in inventory:
         - determine passively cancelled
