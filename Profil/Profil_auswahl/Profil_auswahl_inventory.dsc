@@ -1,7 +1,7 @@
 Profil_auswahl_data:
     type: data
     Profilliste:
-
+    
     - "Free"
     - "Free"
     - "Free"
@@ -230,10 +230,14 @@ Profil_auswahl_click_handler:
                     - else:
                         - teleport <player> spawn
                     - foreach <player.flag[<player.flag[Profil]>.inventory]>:
-                        - inventory set o:<[value]> slot:<[loop_index]>
-                        - inventory set o:Menu_item slot:9
-                        - inventory set o:Rucksack_item slot:8
-                        - inventory set o:Questbuch slot:7
+                        - if <[loop_index]> == 7:
+                            - inventory set o:Questbuch slot:7
+                        - if <[loop_index]> == 8:
+                            - inventory set o:Rucksack_item slot:8
+                        - if <[loop_index]> == 9:
+                            - inventory set o:Menu_item slot:9
+                        - else:
+                            - inventory set o:<[value]> slot:<[loop_index]>
                 - else:
                     - flag <player> Profil_creation.Profil:profil_1
                     - inventory open d:Rassen_auswahl_inventory

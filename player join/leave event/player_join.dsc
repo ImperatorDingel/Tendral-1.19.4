@@ -4,11 +4,11 @@ Player_join:
         on bungee player joins network:
         - flag <player> Profil:!
         - if <player.has_permission[tendral.default]>:
-            - define prefix "<white>[Neuling]"
+            - define prefix <white>[Neuling]
         - if <player.has_permission[tendral.spieler]>:
-            - define prefix "<blue>[Spieler]"
+            - define prefix <blue>[Spieler]
         - if <player.has_permission[tendral.bronze]>:
-            - define prefix "<yellow>[Held]"
+            - define prefix <yellow>[Held]
         - announce "<green>[+] <[prefix]> <gold><player.name>"
         - flag server online_players:->:<player>
         - determine none
