@@ -2,47 +2,47 @@ MinerFarm:
     type: world
     events:
         on player breaks block:
-        # TODO: Drop System auf neues Profil System umlegen
+        # TODO: Drop System auf neues <player.flag[Profil]> System umlegen
         - choose <context.material.name>:
             - case stone:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[cobblestone]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             - case andesite:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[andesite]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             - case diorite:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[diorite]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             - case granite:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[granite]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             - case deepslate:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[cobbled_deepslate]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             - case calcite:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[calcite]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             - case tuff:
-                - define drop <util.random.int[1].to[<player.flag[Profil.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
                 - drop <item[tuff]> <context.location> quantity:<[drop]>
-                - flag <player> Profil.Skills.Mining.Exp:+:1
-                - actionbar "Miner: +1 Exp <player.flag[Profil.Skills.Mining.Exp]>/<player.flag[Profil.Skills.Mining.Target]>"
+                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:1
+                - actionbar "Miner: +1 Exp <player.flag[<player.flag[Profil]>.Skills.Mining.Exp]>/<player.flag[<player.flag[Profil]>.Skills.Mining.Target]>"
             # Erze type Stone
             - case coal_ore:
                 - if <player.item_in_hand.flag[break_power]> >= 1:
-                    - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
+                    - define drop <util.random.int[1].to[<player.flag[<player.flag[profil]>.Skills.Mining.MaxDrop]>]>
                     - define list <list>
                     - define xp:0
                     - repeat <[drop]>:
@@ -57,7 +57,7 @@ MinerFarm:
                             - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                         - define item <item[coal].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
                         - define list <[list].include[<[item]>]>
-                    - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                    - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                     - actionbar "Mining +<[xp]> Exp " targets:<player>
                     - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                     - determine <[list]>
@@ -80,7 +80,7 @@ MinerFarm:
                     - if <[chance]> >= 95:
                         - define item <item[big_tin_raw_ore]>
                         - define xp 20
-                    - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                    - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                     - actionbar "Mining +<[xp]> Exp " targets:<player>
                     - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                     - determine <[item]>
@@ -103,7 +103,7 @@ MinerFarm:
                     - if <[chance]> >= 95:
                         - define item <item[big_copper_raw_ore]>
                         - define xp 20
-                    - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                    - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                     - actionbar "Mining +<[xp]> Exp " targets:<player>
                     - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                     - determine <[item]>
@@ -142,7 +142,7 @@ MinerFarm:
                         - "<gold><bold>۞ Preis:"
                         - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                     - define item <item[raw_iron].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                    - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                    - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                     - actionbar "Mining +<[xp]> Exp " targets:<player>
                     - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                     - determine <[item]>
@@ -180,7 +180,7 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_gold].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
@@ -215,7 +215,7 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_gold].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
@@ -250,7 +250,7 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_copper].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
@@ -285,7 +285,7 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_copper].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
@@ -320,7 +320,7 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_copper].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
@@ -355,7 +355,7 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_copper].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
@@ -390,13 +390,13 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_copper].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
             # TODO: Rubine droppen lassen mit Dropchance
             - case deepslate_gold_ore:
-                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[<player.flag[Profil]>]>.Skills.Mining.MaxDrop]>]>
                 - define list <list>
                 - define xp:0
                 - repeat <[drop]>:
@@ -411,13 +411,13 @@ MinerFarm:
                         - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                     - define item <item[emerald].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
                     - define list <[list].include[<[item]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[list]>
             # TODO: Redstone per dropchance droppen lassen
             - case deepslate_redstone_ore:
-                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[<player.flag[Profil]>]>.Skills.Mining.MaxDrop]>]>
                 - define list <list>
                 - define xp:0
                 - repeat <[drop]>:
@@ -432,13 +432,13 @@ MinerFarm:
                         - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                     - define item <item[redstone].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
                     - define list <[list].include[<[item]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[list]>
             # TODO: Emerald per dropchance droppen lassen
             - case deepslate_emerald_ore:
-                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[<player.flag[Profil]>]>.Skills.Mining.MaxDrop]>]>
                 - define list <list>
                 - define xp:0
                 - repeat <[drop]>:
@@ -453,7 +453,7 @@ MinerFarm:
                         - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                     - define item <item[emerald].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
                     - define list <[list].include[<[item]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[list]>
@@ -488,13 +488,13 @@ MinerFarm:
                     - "<gold><bold>۞ Preis:"
                     - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                 - define item <item[raw_copper].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[item]>
             # TODO: Diamond per dropchance droppen lassen
             - case deepslate_diamond_ore:
-                - define drop <util.random.int[1].to[<player.flag[<player.flag[Profil]>.Skills.Mining.MaxDrop]>]>
+                - define drop <util.random.int[1].to[<player.flag[<player.flag[<player.flag[Profil]>]>.Skills.Mining.MaxDrop]>]>
                 - define list <list>
                 - define xp:0
                 - repeat <[drop]>:
@@ -509,7 +509,7 @@ MinerFarm:
                         - "<gold><bold>۞ <[Preis].proc[Economy_Tendral_proc2]>"
                     - define item <item[diamond].with_map[<[Info]>].with_flag[Preis:<[Preis]>]>
                     - define list <[list].include[<[item]>]>
-                - flag <player> <player.flag[Profil]>.Skills.Mining.Exp:+:<[xp]>
+                - flag <player> <player.flag[<player.flag[Profil]>]>.Skills.Mining.Exp:+:<[xp]>
                 - actionbar "Mining +<[xp]> Exp " targets:<player>
                 - toast "Mining +<[xp]> Exp" icon:iron_pickaxe targets:<player>
                 - determine <[list]>
