@@ -36,8 +36,13 @@ Mobs:
         on player damages entity:
         #- determine passively cancelled
         - flag <context.entity> damager:<player>
-        #- hurt <player.flag[<player.flag[Profil]>.Stats.Dmg]> <context.entity>
-        - determine <player.flag[<player.flag[Profil]>.Stats.Dmg]>
+        - spawn damage_armorstand <context.entity.location> save:damageplate
+        - adjust <entry[damageplate].spawned_entity> custom_name:<red>🗡<player.flag[<player.flag[Profil]>.Stats.Dmg]>
+        - adjust <entry[damageplate].spawned_entity> custom_name_visible:true
+        - hurt <player.flag[<player.flag[Profil]>.Stats.Dmg]> <context.entity>
+        - wait 1s
+        - remove <entry[damageplate].spawned_entity>
+        #- determine <player.flag[<player.flag[Profil]>.Stats.Dmg]>
         on entity damages player:
         #- determine passively cancelled
         - define entitydmg <context.damager.flag[dmg]>
@@ -53,3 +58,15 @@ Mobs:
         #- else:
             #- hurt <context.damager.flag[dmg]> <context.entity>
             #- announce to_console <context.damager.flag[dmg]>
+
+damage_armorstand:
+    type: entity
+    entity_type: armor_stand
+    debug: false
+    mechanisms:
+        arms: false
+        base_plate: false
+        invulnerable: true
+        is_small: false
+        visible: false
+        gravity: true
