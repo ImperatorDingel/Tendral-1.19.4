@@ -2,14 +2,8 @@ Level_world:
   type: world
   debug: false
   events:
-    after player joins:
-    - inject Level_task
-    - run LevelXPBar
-    after player quits:
-    - inject Level_task
     after delta time secondly every:1:
-    - inject Level_task
-    after delta time secondly every:5:
+    - run Level_task
     - run LevelXPBar
 
 Level_task:

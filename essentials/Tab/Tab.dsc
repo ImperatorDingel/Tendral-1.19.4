@@ -23,7 +23,11 @@ Tableiste_Data:
     # - <[date]>
     ###Header
     header:
-    - "<[SchwertL].color_gradient[from=<color[yellow]>;to=<color[gray]>]> <gold><bold>Tendral <[SchwertR].color_gradient[from=<color[gray]>;to=<color[yellow]>]>"
+    - <empty>
+    - <empty>
+    - <[logo]>
+    - <empty>
+    #- "<[SchwertL].color_gradient[from=<color[yellow]>;to=<color[gray]>]> <gold><bold>Tendral <[SchwertR].color_gradient[from=<color[gray]>;to=<color[yellow]>]>"
     - "<gold>۞ <bold>Server: <yellow><bold><[motd]> <gold>۞"
     - "<gold>۞ <bold>Spieler online: <yellow><bold><[online]>/<[maxslot]> <gold>۞"
     - "<gold>۞ TPS: <yellow><[tps]> <gold>Ping: <yellow><[ping]> <gold>۞"
@@ -112,6 +116,7 @@ interface_tab_maker:
   debug: false
   definitions: p
   script:
+  - define logo <&chr[Eff7].font[economy-icons]>
   - define tps <proc[interface_server_tps]>
   - define ping <[p].ping>
   - define online <server.online_players.size>

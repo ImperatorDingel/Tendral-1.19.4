@@ -40,11 +40,11 @@ Economy_Tendral_proc2:
   debug: true
   data:
     currency:
-        copper: <gold><bold>⦿
-        silver: <gray><bold>⦿
-        gold: <yellow><bold>⦿
-        diamond: <aqua><bold>⦿
-        emerald: <green><bold>⦿
+        copper: <gold><&chr[1001].font[economy-icons]><bold>
+        silver: <gray><&chr[1001].font[economy-icons]><bold>
+        gold: <yellow><&chr[1001].font[economy-icons]><bold>
+        diamond: <aqua><&chr[1001].font[economy-icons]><bold>
+        emerald: <green><&chr[1001].font[economy-icons]><bold>
   definitions: amount
   script:
     - foreach <script.parsed_key[data.currency]> key:currency as:icon:
