@@ -1,5 +1,6 @@
 Sidebar_data:
     type: data
+    debug: false
     sidebar:
         - <empty>
         - <&chr[Eff9].font[economy-icons]> <gold><bold><[day]> <proc[Month_formatter].context[<[month]>]>, <[year]>
@@ -18,6 +19,7 @@ Sidebar_data:
 
 sidebar_world:
     type: world
+    debug: false
     events:
         on delta time secondly:
         - run sidebar_task
@@ -28,6 +30,7 @@ Sidebar_command:
     description: Opens the Sidebar
     usage: /sidebar
     permission: dscript.mycmd
+    debug: false
     script:
     - define logo <&chr[Eff7].font[economy-icons]>
     - define day <util.time_now.format[dd]>
@@ -45,8 +48,10 @@ Sidebar_command:
 
 sidebar_task:
     type: task
+    debug: false
     script:
-    - stop if:<server.online_players_flagged[sidebar].is_empty>
+    - if <server.online_players_flagged[sidebar].is_empty>:
+        - stop
     - foreach <server.online_players_flagged[sidebar]> as:p:
         - define logo <&chr[Eff7].font[economy-icons]>
         - define day <util.time_now.format[dd]>
@@ -66,6 +71,7 @@ sidebar_task:
 Month_formatter:
     type: procedure
     definitions: date
+    debug: false
     script:
     - choose <[date]>:
         - case 01:
@@ -97,6 +103,7 @@ Month_formatter:
 Profil_formatter:
     type: procedure
     definitions: Profil
+    debug: false
     script:
     - choose <[Profil]>:
         - case Profil_1:

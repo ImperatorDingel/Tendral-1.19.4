@@ -4,18 +4,20 @@ Player_join:
     events:
         on bungee player joins network:
         - flag <player> Profil:!
-        - if <player.has_permission[tendral.default]>:
-            - define prefix <white>[Neuling]
-        - if <player.has_permission[tendral.spieler]>:
+        - if <player.has_permission[tendral.suffix.Neuling]>:
+            - define prefix <gray>[Neuling]
+        - if <player.has_permission[tendral.suffix.Spieler]>:
             - define prefix <blue>[Spieler]
-        - if <player.has_permission[tendral.bronze]>:
+        - if <player.has_permission[tendral.suffix.Held]>:
             - define prefix <yellow>[Held]
+        - if <player.has_permission[tendral.suffix.GM]>:
+            - define prefix <dark_red>[GM]
         - define freunde <player.flag[freundesliste]>
         - announce "<green>[+] <[prefix]> <gold><player.name>"
         - flag server online_players:->:<player>
-        on player joins:
+        on player joins priority:-1:
         - determine none
-        after player joins:
+        after player joins priority:-1:
         - adjust <player> scale_health:true
         - team name:nameplates add:<player>
         - team name:nameplates option:name_tag_visibility status:never

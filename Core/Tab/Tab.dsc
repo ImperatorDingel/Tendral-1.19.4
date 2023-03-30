@@ -81,7 +81,8 @@ interface_tab_updater:
   type: task
   debug: false
   script:
-  - stop if:<server.online_players.is_empty>
+  - if <server.online_players.is_empty>:
+    - stop
   - foreach <server.online_players> as:p:
     - adjust <[p]> tab_list_info:<proc[interface_tab_maker].context[<[p]>]>
     - team name:<proc[interface_tab_list_name].context[<[p]>]> add:<[p]>

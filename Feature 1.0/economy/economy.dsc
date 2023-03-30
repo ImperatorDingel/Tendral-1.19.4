@@ -37,7 +37,7 @@ Economy_Tendral:
 
 Economy_Tendral_proc2:
   type: procedure
-  debug: true
+  debug: false
   data:
     currency:
         copper: <gold><&chr[1001].font[economy-icons]><bold>
