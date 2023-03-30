@@ -11,9 +11,10 @@ Hotbar:
         - ratelimit <player> 1t
         - inventory open d:Hauptmenue_inventory
         on player clicks Menu_item in inventory:
-        - determine passively cancelled
-        - ratelimit <player> 1t
-        - inventory open d:Hauptmenue_inventory
+        - if <context.slot> == 9:
+            - determine passively cancelled
+            - ratelimit <player> 1t
+            - inventory open d:Hauptmenue_inventory
         on player drops Menu_item:
         - determine passively cancelled
         on player swaps items offhand:Menu_item:
@@ -26,8 +27,9 @@ Hotbar:
         - determine passively cancelled
         - ratelimit <player> 1t
         on player clicks Rucksack_item in inventory:
-        - determine passively cancelled
-        - ratelimit <player> 1t
+        - if <context.slot> == 9:
+            - determine passively cancelled
+            - ratelimit <player> 1t
         on player drops Rucksack_item:
         - determine passively cancelled
         on player swaps items offhand:Rucksack_item:
@@ -42,9 +44,10 @@ Hotbar:
         - ratelimit <player> 1t
         - inventory open d:Questliste_inventory
         on player clicks Questbuch in inventory:
-        - determine passively cancelled
-        - ratelimit <player> 1t
-        - inventory open d:Questliste_inventory
+        - if <context.slot> == 7:
+            - determine passively cancelled
+            - ratelimit <player> 1t
+            - inventory open d:Questliste_inventory
         on player drops Questbuch:
         - determine passively cancelled
         on player swaps items offhand:Questbuch:
