@@ -90,4 +90,4 @@ Support:
         - if <[value].has_flag[Channel.Support]>:
             - define Support:->:<[value]>
     - narrate "<&hover[<script[Chat_data].parsed_key[Global].separated_by[<&nl>]>]><&chr[1009].font[economy-icons]><&end_hover> <[Rang]> <&hover[<script[Chat_data].parsed_key[Player_name].separated_by[<&nl>]>]><[name]><&end_hover> <reset><&chr[1007].font[economy-icons]> <gold><[message]>" targets:<[Support]>
-
+    
