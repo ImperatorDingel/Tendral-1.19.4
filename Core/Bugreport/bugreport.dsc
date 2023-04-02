@@ -33,6 +33,7 @@ bugreport:
         - flag server bugreport.list: []
     - if <context.args.is_empty>:
         - narrate "Bitte gebe einen Bug ein."
+        - determine cancelled
     - else:
         - define bug <context.args.get[1].to[last]>
         - define player <player>
@@ -140,4 +141,3 @@ bugreport_inventory_command:
     - flag <player> bugreport_inventory_first:1
     - flag <player> bugreport_inventory_last:45
     - inventory open d:bugreport_inventory
-#1 - 45 46 90
