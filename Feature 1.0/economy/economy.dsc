@@ -1,6 +1,7 @@
 Economy_Tendral:
 
   type: economy
+  debug: false
 
   # The Bukkit service priority. Priorities are Lowest, Low, Normal, High, Highest.
   priority: normal
