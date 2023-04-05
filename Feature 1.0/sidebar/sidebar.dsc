@@ -11,6 +11,7 @@ Sidebar_data:
         - <&chr[1004].font[economy-icons]> <gold><bold>Level: <[level]>
         - <&chr[1006].font[economy-icons]> <gold><bold>Exp: <[xp]>/<[MaxXp]>
         - <gold><bold>[<reset><[XpBarCompact]><gold><bold>]
+        - <empty>
         - <yellow><&chr[1001].font[economy-icons]><gold><bold>Geld
         - <[money]>
         - <empty>
@@ -53,19 +54,22 @@ sidebar_task:
     - if <server.online_players_flagged[sidebar].is_empty>:
         - stop
     - foreach <server.online_players_flagged[sidebar]> as:p:
-        - define logo <&chr[Eff7].font[economy-icons]>
-        - define day <util.time_now.format[dd]>
-        - define month <util.time_now.format[MM]>
-        - define year <util.time_now.format[yyyy]>
-        - define Profil <[p].flag[Profil]>
-        - define Zeit <util.time_now.format[HH:mm:ss]>
-        - define name <[p].name>
-        - define Xp <proc[metric_number].context[<[p].flag[<[p].flag[Profil]>.EXP.Exp]>]>
-        - define MaxXp <proc[metric_number].context[<[p].flag[<[p].flag[Profil]>.EXP.Target]>]>
-        - define XpBarCompact <[p].flag[<[p].flag[Profil]>.ExpBar.Level]>
-        - define level <[p].flag[<[p].flag[Profil]>.Level]>
-        - define money <server.economy.format[<[p].flag[<[p].flag[Profil]>.Economy.Money]>]>
-        - sidebar set title:<[logo]> values:<script[Sidebar_data].parsed_key[sidebar].separated_by[|]> players:<[p]>
+        - if <[p].has_flag[Profil]>:
+            - define logo <&chr[Eff7].font[economy-icons]>
+            - define day <util.time_now.format[dd]>
+            - define month <util.time_now.format[MM]>
+            - define year <util.time_now.format[yyyy]>
+            - define Profil <[p].flag[Profil]>
+            - define Zeit <util.time_now.format[HH:mm:ss]>
+            - define name <[p].name>
+            - define Xp <proc[metric_number].context[<[p].flag[<[p].flag[Profil]>.EXP.Exp]>]>
+            - define MaxXp <proc[metric_number].context[<[p].flag[<[p].flag[Profil]>.EXP.Target]>]>
+            - define XpBarCompact <[p].flag[<[p].flag[Profil]>.ExpBar.Level]>
+            - define level <[p].flag[<[p].flag[Profil]>.Level]>
+            - define money <server.economy.format[<[p].flag[<[p].flag[Profil]>.Economy.Money]>]>
+            - sidebar set title:<[logo]> values:<script[Sidebar_data].parsed_key[sidebar].separated_by[|]> players:<[p]>
+        - else:
+            - sidebar remove players:<[p]>
         
 
 Month_formatter:

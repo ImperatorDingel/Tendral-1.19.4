@@ -18,7 +18,7 @@ metric_number:
         1000: k
     definitions: number
     script:
-    - define length <[number].abs.log[10].round>
+    - define length <[number].abs.log[10]>
     - if <[number]> >= 1000:
         - foreach <script.data_key[data]> key:div as:suffix:
             - if <[length]> >= <[div].length.sub[1]>:
