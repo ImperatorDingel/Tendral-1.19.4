@@ -1,11 +1,13 @@
 bossbar_location:
     type: world
+    debug: false
     events:
         on delta time secondly:
         - run bossbar_location_task
 
 bossbar_location_task:
     type: task
+    debug: false
     script:
     - foreach <server.online_players> as:p:
         - define world <[p].world.name>
