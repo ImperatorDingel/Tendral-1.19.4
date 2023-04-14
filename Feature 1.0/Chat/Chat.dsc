@@ -31,6 +31,9 @@ Tendral_Chat:
             - flag <player> Channel.Gilde
         on player chats:
         - determine passively cancelled
+        - if <player.has_flag[Mute]>:
+            - narrate "Du bist gemutet" format:announceformat
+            - determine cancelled
         - if !<player.has_flag[Channel.Global]>:
             - narrate "Du bist nicht im Global Channel!"
             - determine cancelled
@@ -66,6 +69,9 @@ Support:
     permission: dscript.mycmd
     script:
     - define message <context.raw_args>
+    - if <player.has_flag[Mute]>:
+        - narrate "Du bist gemutet" format:announceformat
+        - determine cancelled
     - if !<player.has_flag[Channel.Support]>:
         - narrate "Du bist nicht im Support Channel!"
         - determine cancelled

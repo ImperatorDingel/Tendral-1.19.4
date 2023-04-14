@@ -1,7 +1,7 @@
 AnnounceFormat:
   type: format
   debug: false
-  format: <bold>[<red><bold><&sp>!<&sp><white><bold>] <red><bold>[Tendral] <white><bold><[text]>
+  format: <bold>[<red><bold>!<white><bold>] <red><bold>[System] <white><bold><[text]>
 
 
 announce_Server:
