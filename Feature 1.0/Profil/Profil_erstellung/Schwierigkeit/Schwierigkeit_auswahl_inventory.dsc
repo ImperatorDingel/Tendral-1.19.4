@@ -117,6 +117,7 @@ Schwierigkeit_auswahl_click_handler:
                     Main-Quests:
                     Side-Quests:
                     Daily-Quests:
+                - note <inventory[Rucksack_inventory]> as:<player.flag[Profil_creation.Profil]>_<player.uuid>_Backpack
                 - flag <player> <player.flag[Profil_creation.Profil]>:<[Profil_flag_set]>
                 - flag <player> Profil:<player.flag[Profil_creation.Profil]>
                 - flag <player> profil_creation:!
@@ -219,6 +220,7 @@ Schwierigkeit_auswahl_click_handler:
                     Side-Quests:
                     Daily-Quests:
                     Open-Quests:
+                - note <inventory[Rucksack_inventory]> as:<player.flag[Profil_creation.Profil]>_<player.uuid>_Backpack
                 - flag <player> <player.flag[Profil_creation.Profil]>:<[Profil_flag_set]>
                 - flag <player> Profil:<player.flag[Profil_creation.Profil]>
                 - flag <player> profil_creation:!

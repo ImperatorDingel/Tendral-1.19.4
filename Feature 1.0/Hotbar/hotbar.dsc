@@ -23,13 +23,16 @@ Hotbar:
         on player left clicks block with:Rucksack_item:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:<player.flag[<player.flag[Profil]>.Rucksack]>
         on player right clicks block with:Rucksack_item:
         - determine passively cancelled
         - ratelimit <player> 1t
+        - inventory open d:<player.flag[<player.flag[Profil]>.Rucksack]>
         on player clicks Rucksack_item in inventory:
         - if <context.slot> == 9:
             - determine passively cancelled
             - ratelimit <player> 1t
+            - inventory open d:<player.flag[<player.flag[Profil]>.Rucksack]>
         on player drops Rucksack_item:
         - determine passively cancelled
         on player swaps items offhand:Rucksack_item:
