@@ -10,7 +10,11 @@ bossbar_location_task:
     debug: false
     script:
     - foreach <server.online_players> as:p:
-        - define world <[p].world.name>
-        - define biome <[p].location.biome.name>
-        - define claim <[p].location.areas.first.note_name.if_null[<empty>]>
-        - bossbar MyMessageID players:<[p]> "title:<[world]> - <[biome]> - <[claim]>" progress:0
+        - if <[p].has_flag[Profil]>:
+            - define world <[p].world.name>
+            - define biome <[p].location.biome.name>
+            - define claim <[p].location.areas.first.note_name.if_null[<empty>]>
+            - bossbar Location players:<[p]> "title:<[world]> - <[biome]> - <[claim]>" progress:0
+        - else:
+            - if <[p].bossbar_ids.contains[location]>:
+                - bossbar remove players:<[p]> Location
