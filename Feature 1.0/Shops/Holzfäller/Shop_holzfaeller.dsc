@@ -32,13 +32,15 @@ Shop_holzfaeller_inventory:
       tools: iron_axe[display=<red>Tools]
       blocks: oak_log[display=<red>Logs]
       sell: sunflower[display=<red>Sell]
+      sapl: oak_sapling[display=<red>Saplings]
+      air: black_stained_glass_pane
     slots:
-    - [] [] [] [] [] [] [] [] []
-    - [] [tools] [] [] [] [] [] [] []
-    - [] [blocks] [] [] [] [] [] [] []
-    - [] [sell] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
+    - [air] [air] [air] [air] [air] [air] [air] [air] [air]
+    - [air] [tools] [air] [] [] [] [] [] [air]
+    - [air] [blocks] [air] [] [] [] [] [] [air]
+    - [air] [sapl] [air] [] [] [] [] [] [air]
+    - [air] [sell] [air] [] [] [] [] [] [air]
+    - [air] [air] [air] [air] [air] [air] [air] [air] [air]
 
 
 
