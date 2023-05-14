@@ -29,23 +29,23 @@ Shop_holzfaeller_inventory_sell_data:
         - <[lore]>
         - <server.economy.format[<[preis]>]>
         i@oak_sapling:
-            sell: 60
-        spruce_sapling:
-            sell: 60
-        birch_sapling:
-            sell: 60
-        jungle_sapling:
-            sell: 60
-        acacia_sapling:
-            sell: 60
-        dark_oak_sapling:
-            sell: 60
-        mangrove_propagule:
-            sell: 60
-        cherry_sapling:
-            sell: 60
+            sell: 2
+        i@spruce_sapling:
+            sell: 2
+        i@birch_sapling:
+            sell: 2
+        i@jungle_sapling:
+            sell: 2
+        i@acacia_sapling:
+            sell: 2
+        i@dark_oak_sapling:
+            sell: 2
+        i@mangrove_propagule:
+            sell: 2
+        i@cherry_sapling:
+            sell: 2
         i@oak_log:
-            sell: 20
+            sell: 5
         allowed: <green>[◀ Kaufen]
         disallowed: <red>Nicht genug Geld
 
@@ -58,7 +58,7 @@ Shop_holzfaeller_inventory_Sell:
     definitions:
       tools: iron_axe[display=<red>Tools]
       blocks: oak_log[display=<red>Logs]
-      sell: sunflower[display=<green>Sell]
+      sell: sunflower[display=<green>Sell;enchantments=sharpness=1;hides=all]
       sapl: oak_sapling[display=<red>Saplings]
       air: black_stained_glass_pane
       verkauf: anvil[display=<red>Verkaufen;lore=<server.economy.format[0]>]
@@ -77,9 +77,6 @@ Shop_holzfaeller_inventory_sell_world:
     type: world
     debug: true
     events:
-        after player right clicks chipped_anvil:
-        - determine passively cancelled
-        - inventory open d:Shop_holzfaeller_inventory_sell
         after player opens Shop_holzfaeller_inventory_sell:
         - flag <player> sell_items:0
         after player clicks in Shop_holzfaeller_inventory_sell:
@@ -87,13 +84,54 @@ Shop_holzfaeller_inventory_sell_world:
         - foreach <context.inventory.list_contents> as:item:
             - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
                 - if ( <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.items]> contains <[item].simple> ):
-                    - define sell <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.<[item]>.sell]>
+                    - define sell <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.<[item].simple>.sell]>
                     - define quantity <[item].quantity>
                     - define all <element[<[sell]>].mul[<[quantity]>]>
                     - define money <[money].insert[<[all]>].at[-1]>
         - flag player sell_value:<[money].sum>
-        - inventory adjust d:<context.inventory> slot:53 "lore:<server.economy.format[<player.flag[sell_value]>]>"
-        after player clicks in Shop_holzfaeller_invnetory_sell:
+        - if <[money].sum> == 0:
+            - inventory adjust d:<context.inventory> slot:53 "display:<red>verkaufen"
+            - inventory adjust d:<context.inventory> slot:53 "lore:<server.economy.format[<player.flag[sell_value]>]>"
+        - else:
+            - inventory adjust d:<context.inventory> slot:53 "display:<green>verkaufen"
+            - inventory adjust d:<context.inventory> slot:53 "lore:<server.economy.format[<player.flag[sell_value]>]>"
+        on player clicks in Shop_holzfaeller_inventory_sell:
+        - choose <context.slot>:
+            - case 11:
+                - inventory open d:Shop_holzfaeller_inventory_tools
+            - case 20:
+                - inventory open d:Shop_holzfaeller_inventory_blocks
+            - case 29:
+                - inventory open d:Shop_holzfaeller_inventory_Saplings
+            - case 38:
+                - inventory open d:Shop_holzfaeller_inventory_Sell
+            - case 53:
+                - define sellitems <list[]>
+                - define notsellitems <list[]>
+                - foreach <context.inventory.list_contents> as:item:
+                  - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
+                        - if ( <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.items]> contains <[item].simple> ):
+                            - define sellitems <[sellitems].insert[<[item]>].at[-1]>
+                        - else:
+                            - if <[item]> == <item[air]>:
+                                - determine passively cancelled
+                            - else:
+                                - define notsellitems <[notsellitems].insert[<[item]>].at[-1]>
+                - narrate <[sellitems]>
+                - narrate <[notsellitems]>
+                - give <[notsellitems]>
+                - flag player <player.flag[Profil]>.economy.money:+:<player.flag[sell_value]>
+                - flag player sell_value:!
+                - inventory set d:<context.inventory> slot:13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 o:<item[air]>
+                #- inventory open d:Shop_holzfaeller_inventory_Sell
+        on player clicks black_stained_glass_pane in Shop_holzfaeller_inventory_sell:
+        - determine cancelled
+        on player closes Shop_holzfaeller_inventory_sell:
+        - define items <list[]>
+        - foreach <context.inventory.list_contents> as:item:
+            - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
+                - define items <[items].insert[<[item]>].at[-1]>
+        - give <[items]>
 
 
 

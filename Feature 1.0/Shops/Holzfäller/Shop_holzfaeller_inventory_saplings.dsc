@@ -64,8 +64,8 @@ Shop_holzfaeller_inventory_Saplings:
     definitions:
       tools: iron_axe[display=<red>Tools]
       blocks: oak_log[display=<red>Logs]
-      sell: sunflower[display=<green>Sell]
-      sapl: oak_sapling[display=<red>Saplings]
+      sell: sunflower[display=<red>Sell]
+      sapl: oak_sapling[display=<green>Saplings;enchantments=sharpness=1;hides=all]
       air: black_stained_glass_pane
     procedural items:
     - define result <list>
@@ -88,3 +88,18 @@ Shop_holzfaeller_inventory_Saplings:
     - [air] [sapl] [air] [] [] [] [] [] [air]
     - [air] [sell] [air] [] [] [] [] [] [air]
     - [air] [air] [air] [air] [air] [air] [air] [air] [air]
+
+Shop_holzfaeller_inventory_saplings_world:
+    type: world
+    debug: true
+    events:
+        on player clicks in Shop_holzfaeller_inventory_saplings:
+        - choose <context.slot>:
+            - case 11:
+                - inventory open d:Shop_holzfaeller_inventory_tools
+            - case 20:
+                - inventory open d:Shop_holzfaeller_inventory_blocks
+            - case 29:
+                - inventory open d:Shop_holzfaeller_inventory_Saplings
+            - case 38:
+                - inventory open d:Shop_holzfaeller_inventory_Sell

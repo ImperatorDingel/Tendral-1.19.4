@@ -42,5 +42,20 @@ Shop_holzfaeller_inventory:
     - [air] [sell] [air] [] [] [] [] [] [air]
     - [air] [air] [air] [air] [air] [air] [air] [air] [air]
 
+Shop_holzfaeller_inventory_world:
+    type: world
+    debug: true
+    events:
+        on player clicks in Shop_holzfaeller_inventory:
+        - choose <context.slot>:
+            - case 11:
+                - inventory open d:Shop_holzfaeller_inventory_tools
+            - case 20:
+                - inventory open d:Shop_holzfaeller_inventory_blocks
+            - case 29:
+                - inventory open d:Shop_holzfaeller_inventory_Saplings
+            - case 38:
+                - inventory open d:Shop_holzfaeller_inventory_Sell
+
 
 
