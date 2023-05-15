@@ -79,6 +79,7 @@ Shop_holzfaeller_inventory_sell_world:
     events:
         after player opens Shop_holzfaeller_inventory_sell:
         - flag <player> sell_items:0
+        - flag <player> shop
         after player clicks in Shop_holzfaeller_inventory_sell:
         - define money <list[]>
         - foreach <context.inventory.list_contents> as:item:
@@ -95,43 +96,49 @@ Shop_holzfaeller_inventory_sell_world:
         - else:
             - inventory adjust d:<context.inventory> slot:53 "display:<green>verkaufen"
             - inventory adjust d:<context.inventory> slot:53 "lore:<server.economy.format[<player.flag[sell_value]>]>"
-        on player clicks in Shop_holzfaeller_inventory_sell:
-        - choose <context.slot>:
-            - case 11:
-                - inventory open d:Shop_holzfaeller_inventory_tools
-            - case 20:
-                - inventory open d:Shop_holzfaeller_inventory_blocks
-            - case 29:
-                - inventory open d:Shop_holzfaeller_inventory_Saplings
-            - case 38:
-                - inventory open d:Shop_holzfaeller_inventory_Sell
-            - case 53:
-                - define sellitems <list[]>
-                - define notsellitems <list[]>
-                - foreach <context.inventory.list_contents> as:item:
-                  - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
-                        - if ( <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.items]> contains <[item].simple> ):
-                            - define sellitems <[sellitems].insert[<[item]>].at[-1]>
-                        - else:
-                            - if <[item]> == <item[air]>:
-                                - determine passively cancelled
+        on player clicks in Shop_holzfaeller_inventory_sell slot:11|20|29|38|53:
+        - if <context.clicked_inventory> == <player.inventory>:
+            - determine passively cancelled
+        - if <context.clicked_inventory> == <inventory[Shop_holzfaeller_inventory_sell]>:
+            - choose <context.slot>:
+                - case 11:
+                    - inventory open d:Shop_holzfaeller_inventory_tools
+                - case 20:
+                    - inventory open d:Shop_holzfaeller_inventory_blocks
+                - case 29:
+                    - inventory open d:Shop_holzfaeller_inventory_Saplings
+                - case 38:
+                    - inventory open d:Shop_holzfaeller_inventory_Sell
+                - case 53:
+                    - define sellitems <list[]>
+                    - define notsellitems <list[]>
+                    - foreach <context.inventory.list_contents> as:item:
+                        - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
+                            - if ( <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.items]> contains <[item].simple> ):
+                                - define sellitems <[sellitems].insert[<[item]>].at[-1]>
                             - else:
-                                - define notsellitems <[notsellitems].insert[<[item]>].at[-1]>
-                - narrate <[sellitems]>
-                - narrate <[notsellitems]>
-                - give <[notsellitems]>
-                - flag player <player.flag[Profil]>.economy.money:+:<player.flag[sell_value]>
-                - flag player sell_value:!
-                - inventory set d:<context.inventory> slot:13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 o:<item[air]>
-                #- inventory open d:Shop_holzfaeller_inventory_Sell
+                                - if <[item]> == <item[air]>:
+                                    - determine passively cancelled
+                                - else:
+                                    - define notsellitems <[notsellitems].insert[<[item]>].at[-1]>
+                    - narrate <[sellitems]>
+                    - narrate <[notsellitems]>
+                    - give <[notsellitems]>
+                    - flag player <player.flag[Profil]>.economy.money:+:<player.flag[sell_value]>
+                    - flag player sell_value:!
+                    - inventory set d:<context.inventory> slot:13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 o:<item[air]>
+                    - flag <player> shop:!
+                    - inventory open d:Shop_holzfaeller_inventory_Sell
         on player clicks black_stained_glass_pane in Shop_holzfaeller_inventory_sell:
         - determine cancelled
         on player closes Shop_holzfaeller_inventory_sell:
         - define items <list[]>
-        - foreach <context.inventory.list_contents> as:item:
-            - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
-                - define items <[items].insert[<[item]>].at[-1]>
-        - give <[items]>
+        - if <player.has_flag[Shop]>:
+            - foreach <context.inventory.list_contents> as:item:
+                - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
+                    - define items <[items].insert[<[item]>].at[-1]>
+            - give <[items]>
+            - flag <player> shop:!
 
 
 
