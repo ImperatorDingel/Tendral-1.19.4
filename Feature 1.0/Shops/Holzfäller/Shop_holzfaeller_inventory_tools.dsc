@@ -2,7 +2,7 @@ Shop_holzfaeller_inventory_tools_data:
     type: data
     Tools:
         Seite_1:
-        - wooden_axe
+        - sellholzaxt
         - stone_axe
         - iron_axe
         - golden_axe
@@ -30,8 +30,8 @@ Shop_holzfaeller_inventory_tools_data:
         -
         - <[lore]>
         - <server.economy.format[<[preis]>]>
-        wooden_axe:
-            display: Gute Axt
+        sellholzaxt:
+            display: Axt Stufe 1
             sell: 150
             min_lvl: 1
             lore:
@@ -76,19 +76,19 @@ Shop_holzfaeller_inventory_tools:
     title: <gold>Holzfäller:<&sp><green>Tools
     gui: true
     definitions:
-      tools: iron_axe[display=<green>Tools;enchantments=sharpness=1;hides=all]
-      blocks: oak_log[display=<red>Logs]
-      sapl: oak_sapling[display=<red>Saplings]
-      sell: sunflower[display=<red>Sell]
+      tools: <item[tools_green]>
+      blocks: <item[blocks_red]>
+      sapl: <item[saplings_red]>
+      sell: <item[sell_red]>
       air: black_stained_glass_pane
     procedural items:
     - define result <list>
     - foreach <script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.Seite_1]> as:i:
-        - if ( wooden_axe|stone_axe|iron_axe|golden_axe|diamond_axe|netherite_axe contains <[i]> ):
+        - if ( sellholzaxt|stone_axe|iron_axe|golden_axe|diamond_axe|netherite_axe contains <[i]> ):
             - define preis <script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.sell]>
             - define desc <script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.lore].separated_by[<&nl>]>
             - if <player.flag[<player.flag[Profil]>.Skills.Foraging.Level]> >= <script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.min_lvl]>:
-                - define min_lvl <green>✔<&sp>Sammler:<&sp><script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.wooden_axe.min_lvl]>
+                - define min_lvl <green>✔<&sp>Sammler:<&sp><script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.min_lvl]>
             - if <player.flag[<player.flag[Profil]>.Skills.Foraging.Level]> < <script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.min_lvl]>:
                 - define min_lvl <red>❌<&sp>Sammler:<&sp><script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.min_lvl]>
             - if <player.flag[<player.flag[Profil]>.Economy.Money]> >= <script[shop_holzfaeller_inventory_tools_data].parsed_key[tools.<[i]>.sell]>:
@@ -112,13 +112,16 @@ Shop_holzfaeller_inventory_tools_world:
     type: world
     debug: true
     events:
-        on player clicks in Shop_holzfaeller_inventory_tools:
-        - choose <context.slot>:
-            - case 11:
-                - inventory open d:Shop_holzfaeller_inventory_tools
-            - case 20:
-                - inventory open d:Shop_holzfaeller_inventory_blocks
-            - case 29:
-                - inventory open d:Shop_holzfaeller_inventory_Saplings
-            - case 38:
-                - inventory open d:Shop_holzfaeller_inventory_Sell
+        on player clicks sellholzaxt in Shop_holzfaeller_inventory_tools:
+        - give <item[holzaxt]>
+        - flag <player> <player.flag[Profil]>.economy.money:-:20
+        on player clicks black_stained_glass_pane in Shop_holzfaeller_inventory_tools:
+        - determine cancelled
+        on player clicks tools_green in Shop_holzfaeller_inventory_tools:
+        - determine cancelled
+        on player clicks blocks_red in Shop_holzfaeller_inventory_tools:
+        - inventory open d:Shop_holzfaeller_inventory_blocks
+        on player clicks saplings_red in Shop_holzfaeller_inventory_tools:
+        - inventory open d:Shop_holzfaeller_inventory_Saplings
+        on player clicks sell_red in Shop_holzfaeller_inventory_tools:
+        - inventory open d:Shop_holzfaeller_inventory_sell

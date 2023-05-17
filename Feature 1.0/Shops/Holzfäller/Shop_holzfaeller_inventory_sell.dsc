@@ -10,19 +10,38 @@ Shop_holzfaeller_inventory_sell_data:
         - <item[dark_oak_sapling]>
         - <item[mangrove_propagule]>
         - <item[cherry_sapling]>
-        - <item[oak_log]>
-        - <item[spruce_log]>
-        - null
-        - null
-        - null
-        - null
-        - null
-        - null
-        - null
-        - null
-        - null
-        - null
-        - null
+        - <item[oak_log_1].simple>
+        - <item[oak_log_2].simple>
+        - <item[oak_log_3].simple>
+        - <item[oak_log_4].simple>
+        - <item[spruce_log_1].simple>
+        - <item[spruce_log_2].simple>
+        - <item[spruce_log_3].simple>
+        - <item[spruce_log_4].simple>
+        - <item[birch_log_1].simple>
+        - <item[birch_log_2].simple>
+        - <item[birch_log_3].simple>
+        - <item[birch_log_4].simple>
+        - <item[jungle_log_1].simple>
+        - <item[jungle_log_2].simple>
+        - <item[jungle_log_3].simple>
+        - <item[jungle_log_4].simple>
+        - <item[acacia_log_1].simple>
+        - <item[acacia_log_2].simple>
+        - <item[acacia_log_3].simple>
+        - <item[acacia_log_4].simple>
+        - <item[dark_oak_log_1].simple>
+        - <item[dark_oak_log_2].simple>
+        - <item[dark_oak_log_3].simple>
+        - <item[dark_oak_log_4].simple>
+        - <item[mangrove_log_1].simple>
+        - <item[mangrove_log_2].simple>
+        - <item[mangrove_log_3].simple>
+        - <item[mangrove_log_4].simple>
+        - <item[cherry_log_1].simple>
+        - <item[cherry_log_2].simple>
+        - <item[cherry_log_3].simple>
+        - <item[cherry_log_4].simple>
         Item_lore:
         -
         -
@@ -44,8 +63,70 @@ Shop_holzfaeller_inventory_sell_data:
             sell: 2
         i@cherry_sapling:
             sell: 2
-        i@oak_log:
-            sell: 5
+        i@oak_log_1:
+            sell: 2
+        i@oak_log_2:
+            sell: 7
+        i@oak_log_3:
+            sell: 9
+        i@oak_log_4:
+            sell: 11
+        i@spruce_log_1:
+            sell: 2
+        i@spruce_log_2:
+            sell: 7
+        i@spruce_log_3:
+            sell: 9
+        i@spruce_log_4:
+            sell: 11
+        i@birch_log_1:
+            sell: 2
+        i@birch_log_2:
+            sell: 7
+        i@birch_log_3:
+            sell: 9
+        i@birch_log_4:
+            sell: 11
+        i@dark_oak_log_1:
+            sell: 2
+        i@dark_oak_log_2:
+            sell: 7
+        i@dark_oak_log_3:
+            sell: 9
+        i@dark_oak_log_4:
+            sell: 11
+        i@jungle_log_1:
+            sell: 2
+        i@jungle_log_2:
+            sell: 7
+        i@jungle_log_3:
+            sell: 9
+        i@jungle_log_4:
+            sell: 11
+        i@acacia_log_1:
+            sell: 2
+        i@acacia_log_2:
+            sell: 7
+        i@acacia_log_3:
+            sell: 9
+        i@acacia_log_4:
+            sell: 11
+        i@mangrove_log_1:
+            sell: 2
+        i@mangrove_log_2:
+            sell: 7
+        i@mangrove_log_3:
+            sell: 9
+        i@mangrove_log_4:
+            sell: 11
+        i@cherry_log_1:
+            sell: 2
+        i@cherry_log_2:
+            sell: 7
+        i@cherry_log_3:
+            sell: 9
+        i@cherry_log_4:
+            sell: 11
         allowed: <green>[◀ Kaufen]
         disallowed: <red>Nicht genug Geld
 
@@ -56,12 +137,12 @@ Shop_holzfaeller_inventory_Sell:
     title: <gold>Holzfäller:<&sp><green>Verkaufen
     gui: false
     definitions:
-      tools: iron_axe[display=<red>Tools]
-      blocks: oak_log[display=<red>Logs]
-      sell: sunflower[display=<green>Sell;enchantments=sharpness=1;hides=all]
-      sapl: oak_sapling[display=<red>Saplings]
+      tools: <item[tools_red]>
+      blocks: <item[blocks_red]>
+      sell: <item[sell_green]>
+      sapl: <item[saplings_red]>
       air: black_stained_glass_pane
-      verkauf: anvil[display=<red>Verkaufen;lore=<server.economy.format[0]>]
+      verkauf: <item[sellconfirm]>]
     procedural items:
     - define result <list>
     - determine <[result]>
@@ -96,40 +177,34 @@ Shop_holzfaeller_inventory_sell_world:
         - else:
             - inventory adjust d:<context.inventory> slot:53 "display:<green>verkaufen"
             - inventory adjust d:<context.inventory> slot:53 "lore:<server.economy.format[<player.flag[sell_value]>]>"
-        on player clicks in Shop_holzfaeller_inventory_sell slot:11|20|29|38|53:
-        - if <context.clicked_inventory> == <player.inventory>:
-            - determine passively cancelled
-        - if <context.clicked_inventory> == <inventory[Shop_holzfaeller_inventory_sell]>:
-            - choose <context.slot>:
-                - case 11:
-                    - inventory open d:Shop_holzfaeller_inventory_tools
-                - case 20:
-                    - inventory open d:Shop_holzfaeller_inventory_blocks
-                - case 29:
-                    - inventory open d:Shop_holzfaeller_inventory_Saplings
-                - case 38:
-                    - inventory open d:Shop_holzfaeller_inventory_Sell
-                - case 53:
-                    - define sellitems <list[]>
-                    - define notsellitems <list[]>
-                    - foreach <context.inventory.list_contents> as:item:
-                        - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
-                            - if ( <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.items]> contains <[item].simple> ):
-                                - define sellitems <[sellitems].insert[<[item]>].at[-1]>
+        on player clicks sellconfirm in Shop_holzfaeller_inventory_sell:
+                - define sellitems <list[]>
+                - define notsellitems <list[]>
+                - foreach <context.inventory.list_contents> as:item:
+                    - if ( 13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 contains <[loop_index]> ):
+                        - if ( <script[Shop_holzfaeller_inventory_sell_data].parsed_key[sellable.items]> contains <[item].simple> ):
+                            - define sellitems <[sellitems].insert[<[item]>].at[-1]>
+                        - else:
+                            - if <[item]> == <item[air]>:
+                                - determine passively cancelled
                             - else:
-                                - if <[item]> == <item[air]>:
-                                    - determine passively cancelled
-                                - else:
-                                    - define notsellitems <[notsellitems].insert[<[item]>].at[-1]>
-                    - narrate <[sellitems]>
-                    - narrate <[notsellitems]>
-                    - give <[notsellitems]>
-                    - flag player <player.flag[Profil]>.economy.money:+:<player.flag[sell_value]>
-                    - flag player sell_value:!
-                    - inventory set d:<context.inventory> slot:13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 o:<item[air]>
-                    - flag <player> shop:!
-                    - inventory open d:Shop_holzfaeller_inventory_Sell
+                                - define notsellitems <[notsellitems].insert[<[item]>].at[-1]>
+                - narrate "Du hast <server.economy.format[<player.flag[sell_value]>]> gekriegt."
+                - give <[notsellitems]>
+                - flag player <player.flag[Profil]>.economy.money:+:<player.flag[sell_value]>
+                - flag player sell_value:!
+                - inventory set d:<context.inventory> slot:13|14|15|16|17|22|23|24|25|26|31|32|33|34|35|40|41|42|43|44 o:<item[air]>
+                - flag <player> shop:!
+                - inventory open d:Shop_holzfaeller_inventory_Sell
         on player clicks black_stained_glass_pane in Shop_holzfaeller_inventory_sell:
+        - determine cancelled
+        on player clicks tools_red in Shop_holzfaeller_inventory_sell:
+        - inventory open d:Shop_holzfaeller_inventory_tools
+        on player clicks blocks_red in Shop_holzfaeller_inventory_sell:
+        - inventory open d:Shop_holzfaeller_inventory_blocks
+        on player clicks saplings_red in Shop_holzfaeller_inventory_sell:
+        - inventory open d:Shop_holzfaeller_inventory_Saplings
+        on player clicks sell_green in Shop_holzfaeller_inventory_sell:
         - determine cancelled
         on player closes Shop_holzfaeller_inventory_sell:
         - define items <list[]>
@@ -139,6 +214,3 @@ Shop_holzfaeller_inventory_sell_world:
                     - define items <[items].insert[<[item]>].at[-1]>
             - give <[items]>
             - flag <player> shop:!
-
-
-
