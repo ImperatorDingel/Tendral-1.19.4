@@ -29,7 +29,7 @@ Hotbar:
         - ratelimit <player> 1t
         - inventory open d:<player.flag[<player.flag[Profil]>.Rucksack]>
         on player clicks Rucksack_item in inventory:
-        - if <context.slot> == 9:
+        - if <context.slot> == 8:
             - determine passively cancelled
             - ratelimit <player> 1t
             - inventory open d:<player.flag[<player.flag[Profil]>.Rucksack]>
