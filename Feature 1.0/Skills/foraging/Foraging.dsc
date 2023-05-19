@@ -52,6 +52,14 @@ German_Foraging:
   Foraging_red: Erreiche für die nächsten Stufen erst
   Foraging_stats: ❈ Mana +1
 
+Foraging_LevelUp:
+  type: data
+  LevelUp:
+      - <green><strikethrough>---------------------------------------------------
+      - <green>Skill Level erhöht
+      - <reset><green><[oldlevel1]> -> <[newlevel1]>
+      - <green><strikethrough>---------------------------------------------------
+
 ForagingLevel_world:
   type: world
   debug: false
@@ -68,7 +76,7 @@ ForagingLevel_world:
 
 ForagingLevel:
     type: task
-    debug: false
+    debug: true
     script:
       - stop if:<server.online_players.is_empty>
       - foreach <server.online_players_flagged[Profil]> as:p:
@@ -80,7 +88,12 @@ ForagingLevel:
           - flag <[p]> <[p].flag[Profil]>.Skills.Foraging.Target:*:1.25
           - flag <[p]> <[p].flag[Profil]>.Skills.Foraging.MaxDrop:++
           - flag <[p]> <[p].flag[Profil]>.Stats.ManaMax:++
-          - narrate targets:<[p]> "<green><bold><script[Foraging].data_key[Foraging_<[p].flag[<[p].flag[Profil]>.Skills.Foraging.Level].sub[1]>]> erhöhte sich auf <green><bold><script[Foraging].data_key[Foraging_<[p].flag[Profil.Skills.Foraging.Level]>]>" per_player
+          - define newlevel <[p].flag[<[p].flag[profil]>.Skills.Foraging.Level]>
+          - define oldlevel <[newlevel].sub[1]>
+          - define newlevel1 <script[German_Foraging].data_key[Foraging_<[newlevel]>]>
+          - define oldlevel1 <script[German_Foraging].data_key[Foraging_<[oldlevel]>]>
+          - narrate targets:<[p]> <script[Foraging_LevelUp].parsed_key[LevelUp].separated_by[<&nl>]> per_player
+          - toast "Foraging <[newlevel1]>" icon:iron_axe targets:<[p]>
           - playsound <[p]> sound:ENTITY_PLAYER_LEVELUP volume:1.0 pitch:0.6
 
 ForagingXPBar:
