@@ -76,7 +76,7 @@ ForagingLevel_world:
 
 ForagingLevel:
     type: task
-    debug: true
+    debug: false
     script:
       - stop if:<server.online_players.is_empty>
       - foreach <server.online_players_flagged[Profil]> as:p:

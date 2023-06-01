@@ -63,6 +63,8 @@ ForagesFarm:
             - define dropchance <util.random.int[1].to[<player.flag[<player.flag[profil]>.Skills.Foraging.MaxDrop]>]>
             - if <[dropchance]> <= 5:
                 - define item <item[oak_log_1]>
+            - if <[dropchance]> < 10:
+                - define item <item[oak_log_1]>
             - if <[dropchance]> > 10:
                 - define item <item[oak_log_2]>
             - if <[dropchance]> > 15:
