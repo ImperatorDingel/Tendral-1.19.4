@@ -122,7 +122,6 @@ Schwierigkeit_auswahl_click_handler:
                 - flag <player> Profil:<player.flag[Profil_creation.Profil]>
                 - flag <player> profil_creation:!
                 - teleport <player> spawn
-                - inventory set o:Questbuch slot:7
                 - inventory set o:Rucksack_item slot:8
                 - inventory set o:Menu_item slot:9
             - case 6:
@@ -225,6 +224,5 @@ Schwierigkeit_auswahl_click_handler:
                 - flag <player> Profil:<player.flag[Profil_creation.Profil]>
                 - flag <player> profil_creation:!
                 - teleport <player> spawn
-                - inventory set o:Questbuch slot:7
                 - inventory set o:Rucksack_item slot:8
                 - inventory set o:Menu_item slot:9

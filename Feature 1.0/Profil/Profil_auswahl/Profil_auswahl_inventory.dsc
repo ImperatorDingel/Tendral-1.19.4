@@ -141,14 +141,20 @@ Profil_auswahl_click_handler:
                 - inventory open d:Profil_auswahl_inventory
             #Profil 2
             - case 12:
+                - flag <player> last_deleted:<player.flag[Profil_2]>
+                - flag <player> deleted_profilslot:Profil_2
                 - flag <player> Profil_2:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 3
             - case 13:
+                - flag <player> last_deleted:<player.flag[Profil_3]>
+                - flag <player> deleted_profilslot:Profil_3
                 - flag <player> Profil_3:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 4
             - case 14:
+                - flag <player> last_deleted:<player.flag[Profil_4]>
+                - flag <player> deleted_profilslot:Profil_4
                 - flag <player> Profil_4:!
                 - inventory open d:Profil_auswahl_inventory
             #Settings
@@ -161,18 +167,26 @@ Profil_auswahl_click_handler:
           #Zweite Reihe
             #Profil 6
             - case 20:
+                - flag <player> last_deleted:<player.flag[Profil_5]>
+                - flag <player> deleted_profilslot:Profil_5
                 - flag <player> Profil_5:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 7
             - case 21:
+                - flag <player> last_deleted:<player.flag[Profil_6]>
+                - flag <player> deleted_profilslot:Profil_6
                 - flag <player> Profil_6:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 8
             - case 22:
+                - flag <player> last_deleted:<player.flag[Profil_7]>
+                - flag <player> deleted_profilslot:Profil_7
                 - flag <player> Profil_7:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 9
             - case 23:
+                - flag <player> last_deleted:<player.flag[Profil_8]>
+                - flag <player> deleted_profilslot:Profil_8
                 - flag <player> Profil_8:!
                 - inventory open d:Profil_auswahl_inventory
             #Werbung
@@ -180,18 +194,26 @@ Profil_auswahl_click_handler:
           #Dritte Reihe
             #Profil 11
             - case 29:
+                - flag <player> last_deleted:<player.flag[Profil_9]>
+                - flag <player> deleted_profilslot:Profil_9
                 - flag <player> Profil_9:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 12
             - case 30:
+                - flag <player> last_deleted:<player.flag[Profil_10]>
+                - flag <player> deleted_profilslot:Profil_10
                 - flag <player> Profil_10:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 13
             - case 31:
+                - flag <player> last_deleted:<player.flag[Profil_11]>
+                - flag <player> deleted_profilslot:Profil_11
                 - flag <player> Profil_11:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 14
             - case 32:
+                - flag <player> last_deleted:<player.flag[Profil_12]>
+                - flag <player> deleted_profilslot:Profil_12
                 - flag <player> Profil_12:!
                 - inventory open d:Profil_auswahl_inventory
             #Werbung
@@ -199,18 +221,26 @@ Profil_auswahl_click_handler:
           #Vierte Reihe
             #Profil 16
             - case 38:
+                - flag <player> last_deleted:<player.flag[Profil_13]>
+                - flag <player> deleted_profilslot:Profil_13
                 - flag <player> Profil_13:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 17
             - case 39:
+                - flag <player> last_deleted:<player.flag[Profil_14]>
+                - flag <player> deleted_profilslot:Profil_14
                 - flag <player> Profil_14:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 18
             - case 40:
+                - flag <player> last_deleted:<player.flag[Profil_15]>
+                - flag <player> deleted_profilslot:Profil_15
                 - flag <player> Profil_15:!
                 - inventory open d:Profil_auswahl_inventory
             #Profil 19
             - case 41:
+                - flag <player> last_deleted:<player.flag[Profil_16]>
+                - flag <player> deleted_profilslot:Profil_16
                 - flag <player> Profil_16:!
                 - inventory open d:Profil_auswahl_inventory
             #Werbung
@@ -519,7 +549,7 @@ Nameplate_task:
         - if <[value].has_permission[tendral.suffix.DEV]>:
             - adjust <[entity]> custom_name:<red>[Dev]<reset>[<[Rasse]>]<&sp><[name]><&sp>[<[Level]>]
         - if <[value].has_permission[tendral.suffix.GM]>:
-            - adjust <[entity]> custom_name:<dark_red>[GM]<reset>[<[Rasse]>]<&sp><[name]><&sp>[<[Level]>]
+            - adjust <[entity]> custom_name:<dark_red>[GM]<reset><&sp><[name]><&sp>[<[Level]>]
 
 nameplates_armorstand:
     type: entity

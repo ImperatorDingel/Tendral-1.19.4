@@ -14,7 +14,7 @@ bossbar_location_task:
             - define world <[p].world.name>
             - define biome <[p].location.biome.name>
             - define claim <[p].location.areas.first.note_name.if_null[<empty>]>
-            - bossbar Location players:<[p]> "title:<[world]> - <[biome]> - <[claim]>" progress:0
+            - bossbar <[p].uuid> players:<[p]> "title:<[world]> - <[biome]> - <[claim]>" progress:0
         - else:
-            - if <[p].bossbar_ids.contains[location]>:
-                - bossbar remove players:<[p]> Location
+            - if <[p].bossbar_ids.contains[<[p].uuid>]>:
+                - bossbar remove players:<[p]> <[p].uuid>
