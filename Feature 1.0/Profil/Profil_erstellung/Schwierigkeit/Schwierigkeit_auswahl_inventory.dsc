@@ -69,6 +69,8 @@ Schwierigkeit_auswahl_click_handler:
                             Level: 0
                             Exp: 0
                             Target: 100
+                            Dropchance: 1
+                            MaxDropchance: 50
                             MaxDrop: 1
                         Farming:
                             Level: 0
@@ -170,6 +172,8 @@ Schwierigkeit_auswahl_click_handler:
                             Level: 0
                             Exp: 0
                             Target: 100
+                            Dropchance: 1
+                            MaxDropchance: 50
                             MaxDrop: 1
                         Farming:
                             Level: 0

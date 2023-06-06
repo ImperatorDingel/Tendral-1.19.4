@@ -87,6 +87,7 @@ ForagingLevel:
           - flag <[p]> <[p].flag[Profil]>.Skills.Foraging.Exp:-:<[p].flag[<[p].flag[Profil]>.Skills.Foraging.Target]>
           - flag <[p]> <[p].flag[Profil]>.Skills.Foraging.Target:*:1.25
           - flag <[p]> <[p].flag[Profil]>.Skills.Foraging.MaxDrop:++
+          - flag <[p]> <[p].flag[Profil]>.Skills.Foraging.MaxDropchance:++
           - flag <[p]> <[p].flag[Profil]>.Stats.ManaMax:++
           - define newlevel <[p].flag[<[p].flag[profil]>.Skills.Foraging.Level]>
           - define oldlevel <[newlevel].sub[1]>
