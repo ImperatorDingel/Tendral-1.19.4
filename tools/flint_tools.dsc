@@ -91,3 +91,19 @@ flint_hoe:
             - <item[air]>|<item[flint]>|<item[flint]>
             - <item[air]>|<item[stick]>|<item[air]>
             - <item[air]>|<item[stick]>|<item[air]>
+
+
+Remove_wood_tools:
+    type: world
+    debug: true
+    events:
+        on wooden_axe recipe formed:
+        - determine cancelled
+        on wooden_shovel recipe formed:
+        - determine cancelled
+        on wooden_sword recipe formed:
+        - determine cancelled
+        on wooden_pickaxe recipe formed:
+        - determine cancelled
+        on wooden_hoe recipe formed:
+        - determine cancelled

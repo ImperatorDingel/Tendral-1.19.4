@@ -30,7 +30,7 @@ Sidebar_command:
     name: sidebar
     description: Opens the Sidebar
     usage: /sidebar
-    permission: dscript.mycmd
+    permission: tendral.sidebar
     debug: false
     script:
     - define logo <&chr[Eff7].font[economy-icons]>
