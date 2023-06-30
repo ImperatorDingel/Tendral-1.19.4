@@ -86,7 +86,7 @@ MinerFarm:
                     - determine <[item]>
                 - else:
                     - narrate "Du kannst diesen Block nicht abbauen."
-                    - determine cancelled
+                    #- determine cancelled
             - case copper_ore:
                 - if <player.item_in_hand.flag[break_power]> >= 1:
                     - define chance <util.random.int[1].to[100]>
