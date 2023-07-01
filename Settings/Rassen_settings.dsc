@@ -16,9 +16,10 @@ Rassen_data:
             Bank: 0
         Stats:
             Leben: 10
+            Leben_Regen: 2
             Dmg: 2
             Def: 0
-            Mana: 0
+            Mana: 10
             ManaMax: 10
             Stamina: 0
             StaminaMax: 100

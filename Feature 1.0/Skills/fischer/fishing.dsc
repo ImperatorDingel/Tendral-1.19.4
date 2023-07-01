@@ -56,15 +56,9 @@ FishingLevel_world:
   type: world
   debug: false
   events:
-    after player joins:
-    - inject FishingLevel
-    - run FishingXPBar
-    after player quits:
-    - inject FishingLevel
     after delta time secondly every:1:
-    - inject FishingLevel
-    after delta time minutely every:1:
-    - run FishingXPBar
+    - run FishingLevel
+
 
 FishingLevel:
     type: task
@@ -74,40 +68,12 @@ FishingLevel:
       - foreach <server.online_players_flagged[Profil]> as:p:
         - define exp <[p].flag[<[p].flag[Profil]>.Skills.Fishing.Exp]>
         - define exptarget <[p].flag[<[p].flag[Profil]>.Skills.Fishing.Target]>
+        - if <[p].flag[<[p].flag[profil]>.Skills.Fishing.Level]> >= <script[Skills_settings].parsed_key[Fishing.Maxlevel]>:
+          - foreach next
         - if <[Exp]> >= <[exptarget]>:
           - flag <[p]> <[p].flag[Profil]>.Skills.Fishing.Level:++
           - flag <[p]> <[p].flag[Profil]>.Skills.Fishing.Exp:-:<[p].flag[<[p].flag[Profil]>.Skills.Fishing.Target]>
-          - flag <[p]> <[p].flag[Profil]>.Skills.Fishing.Target:*:1.25
+          - flag <[p]> <[p].flag[Profil]>.Skills.Fishing.Target:*:<script[Skills_settings].parsed_key[Fishing.Multiplier]>
           - flag <[p]> <[p].flag[Profil]>.Stats.Speed:++
           - toast "<gold><bold>Level up:<n><script[German_Fishing].data_key[Fishing_<[p].flag[<[p].flag[Profil]>.Skills.Fishing.Level].sub[1]>]> -> <script[German_Fishing].data_key[Fishing_<[p].flag[<[p].flag[Profil]>.Skills.Fishing.Level]>]>" icon:fishing_rod targets:<[p]>
           - playsound <[p]> sound:ENTITY_PLAYER_LEVELUP volume:1.0 pitch:0.6
-
-FishingXPBar:
-    type: task
-    debug: false
-    script:
-    - foreach <server.online_players_flagged[Profil]> as:p:
-        - define list <list>
-        - define zahl 0
-        - define exp <[p].flag[<[p].flag[Profil]>.Skills.Fishing.Exp]>
-        - define exptarget <[p].flag[<[p].flag[Profil]>.Skills.Fishing.Target]>
-        - define raw <[exp].div[<[exptarget]>]>
-        - define Prozent <[raw].mul[100].format_number[##.##]>
-        - flag <[p]> <[p].flag[Profil]>.ExpProzent.FishingProzent:<[Prozent]>
-        - repeat 20:
-          - define zahl <[zahl].add[5]>
-          - if <[zahl]> == 100:
-            - if <[p].flag[<[p].flag[Profil]>.ExpProzent.FishingProzent]> >= 99:
-              - define finish <green>-
-              - define list <[list].include[<[finish]>]>
-            - else:
-              - define finish <white>-
-              - define list <[list].include[<[finish]>]>
-          - else:
-            - if <[p].flag[<[p].flag[Profil]>.ExpProzent.FishingProzent]> >= <[zahl]>:
-              - define finish <green>-
-              - define list <[list].include[<[finish]>]>
-            - else:
-              - define finish <white>-
-              - define list <[list].include[<[finish]>]>
-          - flag <[p]> <[p].flag[Profil]>.ExpBar.Fishing:<[list].unseparated>

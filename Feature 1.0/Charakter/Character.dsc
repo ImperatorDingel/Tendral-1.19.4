@@ -21,6 +21,11 @@ Health_world:
         after delta time secondly every:2:
         - run Mana_task
         - run Stamina_task
+        - run health_passiv_regen
+        on player heals because SATIATED:
+        - determine cancelled
+        on player heals because REGEN:
+        - determine cancelled
 
 Health_task:
     type: task
@@ -28,6 +33,21 @@ Health_task:
     script:
     - foreach <server.online_players_flagged[Profil]>:
         - health <[value]> <[value].flag[<[value].flag[Profil]>.Stats.Leben]>
+
+Health_passiv_regen:
+    type: task
+    debug: true
+    script:
+    - foreach <server.online_players_flagged[Profil]> as:p:
+        - if <[p].health> == <[p].health_max>:
+            - foreach next
+        - else:
+            - define health <[p].health.add[<[p].flag[<[p].flag[Profil]>.Stats.Leben_regen]>]>
+            - if <[health]> >= <[p].health_max>:
+                - adjust <[p]> health:<[p].health_max>
+            - else:
+                - adjust <[p]> health:<[health]>
+
 
 Health_actionbar:
     type: task

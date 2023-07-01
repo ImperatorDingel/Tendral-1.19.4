@@ -59,5 +59,5 @@ Prozent_Progressbar:
   debug: false
   script:
     - define raw <[XP].div[<[MaxXP]>]>
-    - define Prozent <[raw].mul[100].format_number[##.##]>
+    - define Prozent <[raw].mul[100].format_number[###.##]>
     - determine <[Prozent]>

@@ -56,15 +56,9 @@ weaponsmithLevel_world:
   type: world
   debug: false
   events:
-    after player joins:
-    - inject weaponsmithLevel
-    - run weaponsmithXPBar
-    after player quits:
-    - inject weaponsmithLevel
     after delta time secondly every:1:
-    - inject weaponsmithLevel
-    after delta time minutely every:1:
-    - run weaponsmithXPBar
+    - run weaponsmithLevel
+
 
 weaponsmithLevel:
     type: task
@@ -74,39 +68,11 @@ weaponsmithLevel:
       - foreach <server.online_players_flagged[Profil]> as:p:
         - define exp <[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Exp]>
         - define exptarget <[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Target]>
+        - if <[p].flag[<[p].flag[profil]>.Professions.Weaponsmith.Level]> >= <script[professions_settings].parsed_key[Weaponsmith.Maxlevel]>:
+          - foreach next
         - if <[Exp]> >= <[exptarget]>:
           - flag <[p]> <[p].flag[Profil]>.Professions.weaponsmith.Level:++
           - flag <[p]> <[p].flag[Profil]>.Professions.weaponsmith.Exp:-:<[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Target]>
-          - flag <[p]> <[p].flag[Profil]>.Professions.weaponsmith.Target:*:2
+          - flag <[p]> <[p].flag[Profil]>.Professions.weaponsmith.Target:*:<script[professions_settings].parsed_key[Weaponsmith.Multiplier]>
           - narrate targets:<[p]> "<green><bold><script[weaponsmith].data_key[weaponsmith_<[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Level].sub[1]>]> erhöhte sich auf <green><bold><script[weaponsmith].data_key[weaponsmith_<[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Level]>]>" per_player
           - playsound <[p]> sound:ENTITY_PLAYER_LEVELUP volume:1.0 pitch:0.6
-
-weaponsmithXPBar:
-    type: task
-    debug: false
-    script:
-    - foreach <server.online_players_flagged[Profil]> as:p:
-        - define list <list>
-        - define zahl 0
-        - define exp <[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Exp]>
-        - define exptarget <[p].flag[<[p].flag[Profil]>.Professions.weaponsmith.Target]>
-        - define raw <[exp].div[<[exptarget]>]>
-        - define Prozent <[raw].mul[100].format_number[##.##]>
-        - flag <[p]> <[p].flag[Profil]>.ExpProzent.weaponsmithProzent:<[Prozent]>
-        - repeat 20:
-          - define zahl <[zahl].add[5]>
-          - if <[zahl]> == 100:
-            - if <[p].flag[<[p].flag[Profil]>.ExpProzent.weaponsmithProzent]> >= 99:
-              - define finish <green>-
-              - define list <[list].include[<[finish]>]>
-            - else:
-              - define finish <white>-
-              - define list <[list].include[<[finish]>]>
-          - else:
-            - if <[p].flag[<[p].flag[Profil]>.ExpProzent.weaponsmithProzent]> >= <[zahl]>:
-              - define finish <green>-
-              - define list <[list].include[<[finish]>]>
-            - else:
-              - define finish <white>-
-              - define list <[list].include[<[finish]>]>
-          - flag <[p]> <[p].flag[Profil]>.ExpBar.weaponsmith:<[list].unseparated>

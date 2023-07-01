@@ -1,17 +1,14 @@
-Skills_settings:
+Professions_settings:
     type: data
-    Combat:
+    Blacksmith:
         Maxlevel: 20
         Multiplier: 1.25
-    Woodcutter:
+    Weaponsmith:
         Maxlevel: 20
         Multiplier: 1.25
-    Mining:
+    Armorer:
         Maxlevel: 20
         Multiplier: 1.25
-    Farming:
-        Maxlevel: 20
-        Multiplier: 1.25
-    Fishing:
+    Cook:
         Maxlevel: 20
         Multiplier: 1.25

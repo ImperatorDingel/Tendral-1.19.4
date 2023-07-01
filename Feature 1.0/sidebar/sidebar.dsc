@@ -9,7 +9,7 @@ Sidebar_data:
         - <gold><bold><[name]> [<proc[Profil_formatter].context[<[profil]>]>]
         - <&chr[1005].font[economy-icons]> <gold><bold>Rang: Admin
         - <&chr[1004].font[economy-icons]> <gold><bold>Level: <[level]>
-        - <&chr[1006].font[economy-icons]> <gold><bold>Exp: <[xp]>/<[MaxXp]>
+        - <&chr[1006].font[economy-icons]> <gold><bold>Exp: <[xp]>/<[MaxXp]> <[prozent]>%
         - <gold><bold>[<reset><[XpBarCompact]><gold><bold>]
         - <empty>
         - <yellow><&chr[1001].font[economy-icons]><gold><bold>Geld
@@ -64,9 +64,10 @@ sidebar_task:
             - define name <[p].name>
             - define Xp <proc[metric_number].context[<[p].flag[<[p].flag[Profil]>.EXP.Exp]>]>
             - define MaxXp <proc[metric_number].context[<[p].flag[<[p].flag[Profil]>.EXP.Target]>]>
-            - define XpBarCompact <proc[long_Progressbar].context[<[Xp]>|<[MaxXp]>]>
+            - define XpBarCompact <proc[long_Progressbar].context[<[p].flag[<[p].flag[Profil]>.EXP.Exp]>|<[p].flag[<[p].flag[Profil]>.EXP.Target]>]>
             - define level <[p].flag[<[p].flag[Profil]>.Level]>
             - define money <server.economy.format[<[p].flag[<[p].flag[Profil]>.Economy.Money]>]>
+            - define prozent <proc[Prozent_Progressbar].context[<[p].flag[<[p].flag[Profil]>.EXP.Exp]>|<[p].flag[<[p].flag[Profil]>.EXP.Target]>]>
             - sidebar set title:<[logo]> values:<script[Sidebar_data].parsed_key[sidebar].separated_by[|]> players:<[p]>
         - else:
             - sidebar remove players:<[p]>

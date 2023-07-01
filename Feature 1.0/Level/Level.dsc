@@ -20,7 +20,7 @@ Level_task:
           - flag <[p]> <[p].flag[Profil]>.Level:++
           - flag <[p]> <[p].flag[Profil]>.EXP.Exp:-:<[p].flag[<[p].flag[Profil]>.EXP.Target]>
           - flag <[p]> <[p].flag[Profil]>.EXP.Target:*:<script[Level_settings].parsed_key[Multiplier]>
-          - flag <[p]> <[p].flag[Profil]>.Stats.Leben:++
+          - flag <[p]> <[p].flag[Profil]>.Stats.Leben:+:<script[Level_settings].parsed_key[Healthgain]>
           - toast "<gold><bold>Level erhöht von <[p].flag[<[p].flag[Profil]>.Level].sub[1]> zu <[p].flag[<[p].flag[Profil]>.Level]>" icon:player_head[skull_skin=<[p].uuid>] targets:<[p]>
           - playsound <[p]> sound:ENTITY_PLAYER_LEVELUP volume:1.0 pitch:0.6
 
