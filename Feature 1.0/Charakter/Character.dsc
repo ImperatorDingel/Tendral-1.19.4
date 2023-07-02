@@ -75,3 +75,30 @@ Stamina_task:
   - foreach <server.online_players_flagged[Profil]>:
     - if <[value].flag[<[value].flag[Profil]>.Stats.Stamina]> < <[value].flag[<[value].flag[Profil]>.Stats.StaminaMax]>:
         - flag <[value]> <[value].flag[Profil]>.Stats.Stamina:++
+
+Healthbar:
+  type: procedure
+  definitions: XP|MaxXP
+  debug: false
+  script:
+    - define raw <[XP].div[<[MaxXP]>]>
+    - define Prozent <[raw].mul[100].format_number[##.##]>
+    - define list <list>
+    - define zahl 0
+    - repeat 20:
+        - define zahl <[zahl].add[5]>
+        - if <[zahl]> == 100:
+          - if <[Prozent]> >= 99:
+            - define finish <green>▇
+            - define list <[list].include[<[finish]>]>
+          - else:
+            - define finish <white>▇
+            - define list <[list].include[<[finish]>]>
+        - else:
+          - if <[Prozent]> >= <[zahl]>:
+            - define finish <green>▇
+            - define list <[list].include[<[finish]>]>
+          - else:
+            - define finish <white>▇
+            - define list <[list].include[<[finish]>]>
+    - determine <[list].unseparated.unescaped>

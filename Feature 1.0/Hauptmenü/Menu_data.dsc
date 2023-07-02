@@ -8,7 +8,7 @@ Menu_Data:
     - "<gold>۞ <bold>Rasse : <yellow><bold><player.flag[<player.flag[Profil]>.Race]>"
     - "<gold>۞ <bold>Level : <yellow><bold><player.flag[<player.flag[Profil]>.Level]>"
     - "<gold>۞ <bold>Exp : <yellow><bold><proc[metric_number].context[<player.flag[<player.flag[Profil]>.EXP.Exp]>]> / <proc[metric_number].context[<player.flag[<player.flag[Profil]>.EXP.Target]>]>"
-    - "<gold>۞ <player.flag[<player.flag[Profil]>.ExpBar.level]> <yellow><bold><player.flag[<player.flag[Profil]>.ExpProzent.LevelProzent]>% "
+    - "<gold>۞ <proc[long_Progressbar].context[<player.flag[<player.flag[Profil]>.EXP.Exp]>|<player.flag[<player.flag[Profil]>.EXP.Target]>]> <yellow><bold><proc[Prozent_Progressbar].context[<player.flag[<player.flag[Profil]>.EXP.Exp]>|<player.flag[<player.flag[Profil]>.EXP.Target]>]>% "
     - "<gold>۞ <bold>Gesamt Exp : <yellow><bold><proc[metric_number].context[<player.flag[<player.flag[Profil]>.EXP.Gesamt]>]>"
     - "<gold>۞ <yellow><bold>Gold : <server.economy.format[<player.flag[<player.flag[Profil]>.Economy.Money]>]>"
     - "<gold>۞ <yellow><bold>Bank : <server.economy.format[<player.flag[<player.flag[Profil]>.Economy.Bank]>]>"
